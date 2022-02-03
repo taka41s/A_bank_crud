@@ -4,7 +4,7 @@
 
 * Postgresql version 12.9
 * Database settings
-You can check the database settings at config/database.yml
+* You can check the database settings at config/database.yml
 
 * Creating the database
  rails g model User email:string password:digest
