@@ -1,0 +1,9 @@
+<div>
+    <form action="/login" method="post"> 
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+        <input type="text" name="user[email]" value="<%=@user.email%>" >
+        <input type="password" name ="user[password]" value="<%=@user.password%>">
+        <input submit type="submit" value="Login">   
+        <%= link_to "Register", "/register" %>
+    </form>
+</div>

@@ -1,0 +1,14 @@
+<div>
+    <h1>Transaction</h1>
+    <p>Current balance: $<%=current_user.current_balance%></p>
+    <form action="transactions" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+        <input type="text" name="user[to_user]" value="<%=@Target_user.email%>">
+        <input type="text" name="user[amount]" value="<%=@Transaction.amount%>">
+        <input type="submit" name="Transfer">
+        <%= link_to "Back", "/deposit" %>
+        <p></p>
+        <%= link_to "Transaction history", "/overview"%>
+    </form>
+</div>
+

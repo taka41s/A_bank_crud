@@ -1,0 +1,20 @@
+<div>
+  <%if current_user%>
+    Hi <%=current_user.email%>
+  <% end %>
+<p>Current balance: $<%=current_user.current_balance%></p>
+    <h1>Deposit</h1>
+    <form action="/deposit" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+        <input type="text" name="user[bank_account]" value="<%=@Deposit.bank_account%>">
+        <input type="text" name="user[amount]" value="<%=@Deposit.amount%>">
+        <input type="submit" name="Deposit">
+            <p></p>
+              <%= link_to "Withdraw", "/withdraw" %>
+            <p></p>
+              <%= link_to "Transaction", "/transactions" %>
+            <p></p>
+              <%= link_to "Deposits historic", "/historic" %>  
+
+    </form>
+</div>

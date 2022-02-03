@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: users
+  pool: 5
+  username: taka
+  password: root
