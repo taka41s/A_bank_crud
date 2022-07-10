@@ -2,7 +2,8 @@
   <%if current_user%>
     Hi <%=current_user.email%>
   <% end %>
-<p>Current balance: $<%=current_user.current_balance%></p>
+<p>Current balance: $ <%=current_user.current_balance%></p>
+  <%= hidden_field(:user_id, :field, :value => current_user.id ) %>
     <p class="notice"><%= flash[:notice] %></p>
     <p class="alert"><%= flash[:alert] %></p>
     <h1>Deposit</h1>
@@ -16,6 +17,7 @@
               <%= link_to "Transaction", "/transactions" %>
             <p></p>
               <%= link_to "Deposits historic", "/historic" %>  
-
+            <p></p>
+              <%= link_to "Close account", "/close_account" %> 
     </form>
 </div>

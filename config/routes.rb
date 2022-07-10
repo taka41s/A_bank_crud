@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'register' => 'users#new'
   post 'register' => 'users#create'
+  get 'close_account' => 'sessions#close_account'
   ######
   get 'login' => 'sessions#new'
   post 'login'=> 'sessions#create'
