@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_10_151707) do
+ActiveRecord::Schema.define(version: 2022_07_10_154919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_07_10_151707) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "disabled_account"
     t.boolean "admin"
+    t.string "name"
   end
 
   create_table "withdraws", force: :cascade do |t|

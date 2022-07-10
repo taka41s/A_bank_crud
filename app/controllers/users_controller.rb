@@ -7,11 +7,11 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			redirect_to '/register', {
-			notice: 'O usuário foi criado com sucesso.',
+			notice: 'User created successfuly.',
 			}
 		else
 			redirect_to '/register', {
-			notice: 'Verifique suas informacoes e tente novamente.',
+			notice: 'Verify your informations and try again.',
 			}
 		end
 	end
@@ -21,7 +21,18 @@ class UsersController < ApplicationController
 	end
 
 	def close_account
-		@user_disabled_account = true
+		user = @current_user
+		byebug
+
+		if @user.save
+			redirect_to '/login', {
+				notice: 'Your account was succesfuly closed.',
+			}
+		else
+		redirect_to '/login', {
+			notice: 'Something goes wrong.',
+			}
+		end
 	end
 
 
