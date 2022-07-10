@@ -1,7 +1,8 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: users
+  database: bank_test
+  host: localhost
   pool: 5
   username: taka
   password: root

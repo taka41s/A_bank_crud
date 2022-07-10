@@ -1,3 +1,41 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+*{
+	margin: 0;
+	padding:0;
+	box-sizing: border-box;
+}
+.container {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #ecf0f1;
+};
+
+.form{
+	display:flex;
+	width:15%;
+	flex-direction: column;
+}
+
+.form input[type=text] {
+	height: 45px;
+	border: default;
+	width: 	100%;
+	padding:20px;
+  margin: 10px;
+}
+.form input[type=password] {
+	height: 45px;
+	border: default;
+	width: 	100%;
+	padding:20px;
+  margin: 10px;
+}
+
+.form input[type=submit] {
+	height: 5px;
+	border: default;
+	width: 	50%;
+	padding:20px;
+  margin: 10px;
+}

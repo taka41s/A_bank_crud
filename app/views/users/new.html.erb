@@ -1,9 +1,18 @@
-<div>
-    <form action="/register" method="post"> 
-        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-        <input type="text" name="user[email]" value="<%=@user.email%>" >
-        <input type="password" name ="user[password]" value="<%=@user.password%>">
-        <input submit type="submit" value="Register">
-        <%= link_to "Login", "/login" %>   
-    </form>
+<div class = "container">
+    <div class = "form"
+		<p class="notice"><%= flash[:notice] %></p>
+    <p class="alert"><%= flash[:alert] %></p>
+
+		<h1> Cadastro </h1>
+
+			<form action="/register" method="post"> 
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					<input type="text" name="user[email]" value="<%=@user.email%>" placeholder="Digite seu email" >
+					<input type="password" name ="user[password]" value="<%=@user.password%>" placeholder="Digite sua senha">
+					<input submit type="submit" value="Enviar"> 
+			</form>
+
+			<td> <%=link_to 'Login', "/login" %> </td>
+		</div>
 </div>
+
