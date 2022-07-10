@@ -8,13 +8,15 @@ class DepositsController < ApplicationController
         @deposit.user_id = current_user.id
 
         if @deposit.save
-            flash[:notice] = 'Sent.'
             @User = User.find_by(email: current_user.email)
             @Deposit = Deposit.new(user_params)
             @Deposit.transaction do
                 @Deposit.save
                 @User.update_attribute(:current_balance, @User.current_balance + @Deposit.amount)
             end
+            redirect_to '/deposit', {
+                notice: 'Sent.',
+            }
         else
             flash[:notice] = 'Something went wrong'
             render :new
@@ -29,6 +31,6 @@ class DepositsController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:bank_account, :amount)
+        params.require(:user).permit(:amount)
     end
 end
