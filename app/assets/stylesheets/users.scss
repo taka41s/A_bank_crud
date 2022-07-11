@@ -1,8 +1,3 @@
-*{
-	margin: 0;
-	padding:0;
-	box-sizing: border-box;
-}
 .container {
 	display:flex;
 	justify-content: center;
@@ -13,29 +8,23 @@
 
 .form{
 	display:flex;
-	width:15%;
+	width:50%;
 	flex-direction: column;
+	padding:10px;
 }
 
-.form input[type=text] {
+.form input{
 	height: 45px;
 	border: default;
 	width: 	100%;
-	padding:20px;
-  margin: 10px;
-}
-.form input[type=password] {
-	height: 45px;
-	border: default;
-	width: 	100%;
-	padding:20px;
+	padding:10px;
   margin: 10px;
 }
 
-.form input[type=submit] {
-	height: 5px;
+.form button{
+	height: 45px;
 	border: default;
-	width: 	50%;
-	padding:20px;
+	width: 	100%;
+	padding:10px;
   margin: 10px;
 }
