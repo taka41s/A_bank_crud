@@ -13,16 +13,20 @@ class TransactionsController < ApplicationController
         @transactions = Transaction.new(user_params)
         @transactions.user_id = current_user.id
         @transactions.from_user = current_user.email
-        if amount <= @user.current_balance
+        @transactions.save
+        if amount <= @user.current_balance && @target_user.present?
             user_new_balance = @user.current_balance - amount
             target_user_new_balance = @target_user.current_balance + amount
             amount - tax
 
             @user.update(current_balance: user_new_balance)
             @target_user.update(current_balance: target_user_new_balance)
-            @transactions.save
             redirect_to '/transactions', {
                 notice: 'transaction done successfuly',
+            }
+        elsif @target_user.present? != true
+            redirect_to '/transactions', {
+                notice: 'User not found',
             }
         else
             redirect_to '/transactions', {
