@@ -7,11 +7,22 @@ development:
   username: taka
   password: root
 
+<<<<<<< Updated upstream
 test:
+=======
+production:
   adapter: postgresql
-  encoding: unicode
-  database: bank_rspec
-  host: localhost
-  pool: 5
-  username: taka
+  database: bank_production
+  username: root
   password: root
+
+
+production:
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+  adapter: postgresql
+  database: my_database_production
+  pool: 5
+  timeout: 5000
