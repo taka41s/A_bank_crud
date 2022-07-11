@@ -9,7 +9,7 @@
 						<input type="text" name="user[email]" value="<%=@user.email%>" placeholder="Type your email" >
 						<input type="password" name ="user[password]" value="" placeholder="Type your password">
 						<button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false">Update your details</button> 
-						<a href="/close_account" class="btn btn-outline-danger">Close account</a>
+						<a href="/close_account" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to disable your account?')">Close account</a>
 				</form>
 		</div>
 </div>
