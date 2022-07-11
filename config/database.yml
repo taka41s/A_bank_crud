@@ -6,3 +6,12 @@ development:
   pool: 5
   username: taka
   password: root
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: bank_rspec
+  host: localhost
+  pool: 5
+  username: taka
+  password: root

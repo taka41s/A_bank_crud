@@ -1,21 +1,21 @@
 class TransactionsController < ApplicationController
     def new
-        @Transaction = Transaction.new
-        @Target_user = User.new
+        @transaction = Transaction.new
+        @target_user = User.new
     end
 
 
     def create
-        @User = User.find_by(email: current_user.email)
+        byebug
+        @user = User.find_by(id: current_user.id)
 
-        @Target_user = User.find_by(email: user_params[:to_user])
+        @target_user = User.find_by(email: user_params[:to_user])
+        amount = user_params[:amount].to_i
 
-        @transaction = Transaction.new(user_params)
-
-        if @transaction.amount <= @User.current_balance
-            @transaction.amount - tax
-            @User.update_attribute(:current_balance, @User.current_balance - @transaction.amount)
-            @Target_user.update_attribute(:current_balance, @Target_user.current_balance + @transaction.amount)
+        if amount <= @user.current_balance
+            amount - tax
+            @user.update_attribute(:current_balance, @user.current_balance - amount)
+            @target_user.update_attribute(:current_balance, @target_user.current_balance + amount)
 
             redirect_to '/transactions', {
                 notice: 'transaction done successfuly',
@@ -30,7 +30,7 @@ class TransactionsController < ApplicationController
     def tax
         if business_time
             tax = 5.0
-        elsif business_time == false && @transaction.amount > 1000
+        elsif business_time == false && params[:amount].to_i > 1000
             tax = 10.0
         else
             tax = 7.0

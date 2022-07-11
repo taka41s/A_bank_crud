@@ -5,8 +5,8 @@
         <p class="notice"><%= flash[:notice] %></p>
         <p class="alert"><%= flash[:alert] %></p>
         <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-        <input type="text" name="user[to_user]" value="<%=@Target_user.email%>">
-        <input type="text" name="user[amount]" value="<%=@Transaction.amount%>">
+        <input type="text" name="user[to_user]" value="<%=@target_user.email%>">
+        <input type="text" name="user[amount]" value="">
         <input type="submit" name="Transfer">
         <%= link_to "Back", "/deposit" %>
         <p></p>
