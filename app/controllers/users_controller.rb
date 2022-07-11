@@ -17,7 +17,18 @@ class UsersController < ApplicationController
 	end
 
 	def edit_account
+		@user = current_user
+		render :edit_account
+	end
 
+	def set_user_edit
+		@user = current_user
+
+		@user.update(user_edit_params)
+
+		@user.save
+
+		render :edit_account
 	end
 
 	def close_account
@@ -34,11 +45,14 @@ class UsersController < ApplicationController
 		end
 	end
 
-
 	private
 
 	def user_params
 			params.require(:user).permit(:email, :password)
+	end
+
+	def user_edit_params
+		params.require(:user).permit(:email, :password, :name)
 	end
 
 end

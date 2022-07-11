@@ -42,6 +42,7 @@ class TransactionsController < ApplicationController
         start_time = Time.parse('2000-01-01T09:00:00Z').strftime('%H:%M:%S')
         end_time = Time.parse('2014-01-24T018:00:00').strftime("%H:%M:%S")
         current_time = Time.now.strftime("%H:%M:%S")
+
         if current_time.between?(start_time, end_time) && weekend == false
             business_time = true
         else 

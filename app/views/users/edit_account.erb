@@ -1,0 +1,19 @@
+<div class = "container">
+    <div class = "form"
+		<p class="notice"><%= flash[:notice] %></p>
+    <p class="alert"><%= flash[:alert] %></p>
+
+		<h1> Edit your account </h1>
+
+			<form action="/:user_id/edit" method="post"> 
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+          <input type="text" name="user[name]" value="" placeholder="Digite seu nome" >
+					<input type="text" name="user[email]" value="" placeholder="Digite seu email" >
+					<input type="password" name ="user[password]" value="" placeholder="Digite sua senha">
+					<input submit type="submit" value="Enviar"> 
+			</form>
+
+			<td> <%= link_to "Back", "/deposit" %> </td>
+		</div>
+</div>
+

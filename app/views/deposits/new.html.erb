@@ -1,6 +1,6 @@
 <div>
   <%if current_user%>
-    Hi <%=current_user.email%>
+    Hi <%=current_user.name%>
   <% end %>
 <p>Current balance: $ <%=current_user.current_balance%></p>
   <%= hidden_field(:user_id, :field, :value => current_user.id ) %>
@@ -18,6 +18,10 @@
             <p></p>
               <%= link_to "Deposits historic", "/historic" %>  
             <p></p>
-              <%= link_to "Close account", "/close_account" %> 
+              <%= link_to "Close account", "/close_account" %>
+            <p></p>
+              <%= link_to "Edit your account", "/:user_id/edit" %> 
+
+              <%= link_to "Sign out", '/logout' %> 
     </form>
 </div>

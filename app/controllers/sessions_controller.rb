@@ -33,6 +33,13 @@ class SessionsController < ApplicationController
 		end
 	end
 
+    def logout
+        session.clear
+        redirect_to '/login', {
+            notice: 'Logout.',
+        }
+    end
+
     private
     def user_params
         params.require(:user).permit(:email, :password)
