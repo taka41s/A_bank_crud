@@ -1,27 +1,10 @@
-<div>
-  <%if current_user%>
-    Hi <%=current_user.name%>
-  <% end %>
-<p>Current balance: $ <%=current_user.current_balance%></p>
-  <%= hidden_field(:user_id, :field, :value => current_user.id ) %>
-    <p class="notice"><%= flash[:notice] %></p>
-    <p class="alert"><%= flash[:alert] %></p>
-    <h1>Deposit</h1>
-    <form action="/deposit" method="POST">
-        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-        <input type="text" name="user[amount]" value="<%=@Deposit.amount%>">
-        <input type="submit" name="Deposit">
-            <p></p>
-              <%= link_to "Withdraw", "/withdraw" %>
-            <p></p>
-              <%= link_to "Transaction", "/transactions" %>
-            <p></p>
-              <%= link_to "Deposits historic", "/historic" %>  
-            <p></p>
-              <%= link_to "Close account", "/close_account" %>
-            <p></p>
-              <%= link_to "Edit your account", "/:user_id/edit" %> 
-
-              <%= link_to "Sign out", '/logout' %> 
-    </form>
+<p class="notice"><%= flash[:notice] %></p>
+<p class="alert"><%= flash[:alert] %></p>
+<div class="container">
+  <form action="/deposit" method="POST">
+      <h1>Deposit</h1>
+      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+      <input type="text" name="user[amount]" value="<%=@deposit.amount%>">
+      <input type="submit" name="Deposit" value="Deposit">
+  </form>
 </div>

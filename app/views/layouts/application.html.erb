@@ -9,8 +9,78 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <% if @current_user.nil? && (login_path.present? || register_path.present?) %>
+    <body>
+        <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+          <div class="p-4 pt-5">
+            <a href="#" class="img logo rounded-circle mb-5" style=""></a>
+            <ul class="list-unstyled components mb-5">
+              <li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="/login">Login</a>
+              </li>
+              <li>
+                <a href="register">Register</a>
+              </li>
+            </ul>
+          </div>
+        </nav> 
+      <%= yield %>
+    </body>
+    <%else%>
+        <body>
+        <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+          <div class="p-4 pt-5">
+            <a href="#" class="img logo rounded-circle mb-5" style=""></a>
+            <ul class="list-unstyled components mb-5">
+              <li class="active">
+                <p>Wallet: $<%=current_user.wallet_balance%></p>
+                <p>Balance: $<%=current_user.current_balance%></p>
+              </li>
+              <li class="active">
+                <a href="/:user_id/edit">
+                  <span class="nav-label">Edit your credentials</span>
+                </a>
+              </li>
+              <li>
+                <a href="/transactions">
+                  <span class="nav-label">Transactions</span>
+                </a>
+              </li>
+              <li>
+                <a href="/deposit">
+                  <span class="nav-label">Deposits</span>
+                </a>
+              </li>
+              <li>
+                <a href="/withdraw">
+                  <span class="nav-label">Withdraw</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="nav-label">Bank statement</span>
+                </a>
+              </li>
+              <li>
+                <a href="/logout">
+                  <span class="nav-label">Sign out</span>
+                </a>
+              </li>
 
-  <body>
-    <%= yield %>
-  </body>
+              <li>
+              <a href="/close_account" class="btn btn-outline-danger">Close account</a>
+              </li>
+            </ul>
+          </div>
+        </nav> 
+      <%= yield %>
+  <%end%>
 </html>

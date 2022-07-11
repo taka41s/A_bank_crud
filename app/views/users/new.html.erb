@@ -1,18 +1,17 @@
 <div class = "container">
-    <div class = "form"
-		<p class="notice"><%= flash[:notice] %></p>
+    <div class = "form">
+		<p class="notice"><%= flash[:notice] %> </p>
     <p class="alert"><%= flash[:alert] %></p>
 
 		<h1> Cadastro </h1>
 
 			<form action="/register" method="post"> 
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-					<input type="text" name="user[email]" value="<%=@user.email%>" placeholder="Digite seu email" >
-					<input type="password" name ="user[password]" value="<%=@user.password%>" placeholder="Digite sua senha">
-					<input submit type="submit" value="Enviar"> 
+					<input type="text" name="user[email]" value="" placeholder="Type your name" >
+					<input type="text" name="user[email]" value="" placeholder="Type your email" >
+					<input type="password" name ="user[password]" value="" placeholder="Type your password">
+					<input submit class="btn-primary" type="submit" value="Create account"> 
 			</form>
-
-			<td> <%=link_to 'Login', "/login" %> </td>
 		</div>
 </div>
 

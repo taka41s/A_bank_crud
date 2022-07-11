@@ -2,7 +2,7 @@ class DepositsController < ApplicationController
     before_action :authenticate_user!
 
     def new
-        @Deposit = Deposit.new
+        @deposit = Deposit.new
     end
 
     def create
@@ -10,11 +10,11 @@ class DepositsController < ApplicationController
         @deposit.user_id = current_user.id
 
         if @deposit.save
-            @User = User.find_by(email: current_user.email)
-            @Deposit = Deposit.new(user_params)
-            @Deposit.transaction do
-                @Deposit.save
-                @User.update_attribute(:current_balance, @User.current_balance + @Deposit.amount)
+            @user = User.find_by(email: current_user.email)
+            @deposit = Deposit.new(user_params)
+            @deposit.transaction do
+                @deposit.save
+                @user.update_attribute(:current_balance, @user.current_balance + @deposit.amount)
             end
             redirect_to '/deposit', {
                 notice: 'Sent.',

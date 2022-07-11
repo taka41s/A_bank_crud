@@ -1,19 +1,16 @@
+
 <div class = "container">
-    <div class = "form"
-		<p class="notice"><%= flash[:notice] %></p>
-    <p class="alert"><%= flash[:alert] %></p>
-
-		<h1> Edit your account </h1>
-
-			<form action="/:user_id/edit" method="post"> 
-					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-          <input type="text" name="user[name]" value="" placeholder="Digite seu nome" >
-					<input type="text" name="user[email]" value="" placeholder="Digite seu email" >
-					<input type="password" name ="user[password]" value="" placeholder="Digite sua senha">
-					<input submit type="submit" value="Enviar"> 
-			</form>
-
-			<td> <%= link_to "Back", "/deposit" %> </td>
+    <div class = "form">
+			<h4> Edit your account </h4>
+			<p class="notice"><%= flash[:notice] %></p>
+			<p class="alert"><%= flash[:alert] %></p>
+				<form action="/:user_id/edit" method="post"> 
+						<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+						<input type="text" name="user[name]" value="<%=@user.name%>" placeholder="Type your name" >
+						<input type="text" name="user[email]" value="<%=@user.email%>" placeholder="Type your email" >
+						<input type="password" name ="user[password]" value="" placeholder="Type your password">
+						<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">Update your details</button> 
+				</form>
 		</div>
 </div>
 
