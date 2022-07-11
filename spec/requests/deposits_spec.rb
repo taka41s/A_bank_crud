@@ -13,7 +13,6 @@ RSpec.describe "Deposits", type: :request do
       user_params = {
         amount: 500.0,
       }
-      byebug
       post(deposit_path, params: {user: user_params})
       @user.reload
       @target_user.reload
