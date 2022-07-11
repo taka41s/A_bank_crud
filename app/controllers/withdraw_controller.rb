@@ -1,17 +1,17 @@
 class WithdrawController < ApplicationController
     def new
-        @Withdraw = Withdraw.new
+        @withdraw = Withdraw.new
     end
 
     def create
-        @User = User.find_by(email: current_user.email)
-        @Withdraw = Withdraw.new(user_params)
-        @Withdraw.user_id = current_user.id
-        if @Withdraw.amount <= @User.current_balance
-            @Withdraw.transaction do
-                @Withdraw.save
-                @User.update_attribute(:current_balance, @User.current_balance - @Withdraw.amount)
-                @User.update_attribute(:wallet_balance, @User.wallet_balance + @Withdraw.amount)
+        @user = User.find_by(email: current_user.email)
+        @withdraw = Withdraw.new(user_params)
+        amount = params[:user][:amount].to_f
+        if amount <= @user.current_balance
+            @withdraw.transaction do
+                @user.update_attribute(:current_balance, @user.current_balance - amount)
+                @user.update_attribute(:wallet_balance, @user.wallet_balance + amount)
+                @withdraw.save && @user.save
             end
         else
             flash.now[:error] = 'Invalid amount'
@@ -19,7 +19,7 @@ class WithdrawController < ApplicationController
     end
     
     def show
-        @Withdraw = Withdraw.where(user_id: current_user.id)
+        @withdraw = Withdraw.where(user_id: current_user.id)
         render :withdraw_historic
     end
 end

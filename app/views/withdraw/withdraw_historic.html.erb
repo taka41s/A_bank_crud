@@ -7,7 +7,7 @@
                 <th>Date and time</th>    
             </thead>
             <tbody>
-                <%=@Withdraw.find_each do |withdraw|%>
+                <%=@withdraw.find_each do |withdraw|%>
                     <tr>
                         <td><%=withdraw.amount%></td>
                         <td><%=withdraw.created_at%></td>                           
