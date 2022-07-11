@@ -4,9 +4,7 @@ class TransactionsController < ApplicationController
         @target_user = User.new
     end
 
-
     def create
-        byebug
         @user = User.find_by(id: current_user.id)
 
         @target_user = User.find_by(email: user_params[:to_user])
