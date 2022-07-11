@@ -4,7 +4,6 @@ RSpec.describe "Transactions", type: :request do
   before do
     @user = User.create!({id: 1, email: 'test', password: 'test', current_balance: 2000.0})
     @target_user = User.create!({id: 2, email: 'test2', password: 'test2', current_balance: 2000.0})
-    current_user = create_session(current_user: @user)
     post(login_path, params: {user: {email: 'test', password: 'test'}})
   end
 

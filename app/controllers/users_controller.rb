@@ -21,8 +21,7 @@ class UsersController < ApplicationController
 	end
 
 	def close_account
-		user = @current_user
-		byebug
+		@user = current_user
 
 		if @user.save
 			redirect_to '/login', {

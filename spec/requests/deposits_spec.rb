@@ -9,7 +9,7 @@ RSpec.describe "Deposits", type: :request do
   end
 
   describe "POST /deposit" do
-    it "deposit working" do
+    it "sum amount with current balance, if pass deposits#create works" do
       user_params = {
         amount: 500.0,
       }
