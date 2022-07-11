@@ -1,4 +1,6 @@
 class TransactionsController < ApplicationController
+    before_action :authenticate_user!
+
     def new
         @transaction = Transaction.new
         @target_user = User.new
