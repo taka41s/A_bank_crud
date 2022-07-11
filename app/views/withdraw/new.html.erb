@@ -3,7 +3,7 @@
     <h1>Withdraw</h1>
     <form action="/withdraw" method="POST">
         <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-        <input type="text" name="user[amount]" value="<%=@Withdraw.amount%>">
+        <input type="text" name="user[amount]" value="">
         <input type="submit" name="Withdraw">
         <%= link_to "Back", "/deposit" %>
         <p></p>
