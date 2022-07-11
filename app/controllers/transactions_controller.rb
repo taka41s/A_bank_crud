@@ -10,7 +10,9 @@ class TransactionsController < ApplicationController
         @user = User.find_by(id: current_user.id)
         @target_user = User.find_by(email: user_params[:to_user])
         amount = user_params[:amount].to_i
-
+        @transactions = Transaction.new(user_params)
+        @transactions.user_id = current_user.id
+        @transactions.from_user = current_user.email
         if amount <= @user.current_balance
             user_new_balance = @user.current_balance - amount
             target_user_new_balance = @target_user.current_balance + amount
@@ -18,7 +20,7 @@ class TransactionsController < ApplicationController
 
             @user.update(current_balance: user_new_balance)
             @target_user.update(current_balance: target_user_new_balance)
-
+            @transactions.save
             redirect_to '/transactions', {
                 notice: 'transaction done successfuly',
             }
@@ -64,15 +66,9 @@ class TransactionsController < ApplicationController
         date = Date.new(year, month, day)
     end
 
-    def show
-        @overview = Transaction.where(user_id: current_user.id)
-        render :overview
-    end
-
-
     private
 
     def user_params
-        params.require(:user).permit(:to_user, :amount)
+        params.require(:user).permit(:to_user, :amount, :from_user, :user_id)
     end
 end

@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   ######
   get 'deposit' => 'deposits#new'
   post 'deposit' => 'deposits#create'
-  get 'historic' => 'deposits#show'
+  get 'home' => 'historics#index'
+  get 'deposits_history' => 'historics#deposits_history'
+  get 'transactions_history' => 'historics#transactions_history'
+  get 'withdraws_history' => 'historics#withdraws_history'
   ######
   get 'withdraw' => 'withdraw#new'
   post 'withdraw' => 'withdraw#create'

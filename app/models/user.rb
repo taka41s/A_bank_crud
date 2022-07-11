@@ -4,6 +4,7 @@ class User < ApplicationRecord
     validates :email, presence: true
     has_many :bank_accounts
     has_many :amounts
+    has_many :historic
     def password
         @password
     end

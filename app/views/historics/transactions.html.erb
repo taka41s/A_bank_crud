@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Transaction id</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@transactions.each do |transaction|%>
+      <tr>
+        <td> <%=transaction.id%> </td>
+        <td><%=transaction.amount%></td>
+        <td><%=transaction.created_at.strftime("%H:%M:%S")%></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
