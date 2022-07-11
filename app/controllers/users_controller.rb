@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			redirect_to '/register', {
-			notice: 'User created successfuly.',
-			}
+			session[:user_id] = @user.id
+
+			redirect_to '/deposit'
 		else
 			redirect_to '/register', {
 			notice: 'Verify your informations and try again.',
