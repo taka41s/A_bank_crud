@@ -8,14 +8,16 @@ class TransactionsController < ApplicationController
 
     def create
         @user = User.find_by(id: current_user.id)
-
         @target_user = User.find_by(email: user_params[:to_user])
         amount = user_params[:amount].to_i
 
         if amount <= @user.current_balance
+            user_new_balance = @user.current_balance - amount
+            target_user_new_balance = @target_user.current_balance + amount
             amount - tax
-            @user.update_attribute(:current_balance, @user.current_balance - amount)
-            @target_user.update_attribute(:current_balance, @target_user.current_balance + amount)
+
+            @user.update(current_balance: user_new_balance)
+            @target_user.update(current_balance: target_user_new_balance)
 
             redirect_to '/transactions', {
                 notice: 'transaction done successfuly',

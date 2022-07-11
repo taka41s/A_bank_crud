@@ -1,7 +1,6 @@
 
 <div class = "container">
     <div class = "form">
-			<h4> Edit your account </h4>
 			<p class="notice"><%= flash[:notice] %></p>
 			<p class="alert"><%= flash[:alert] %></p>
 				<form action="/:user_id/edit" method="post"> 
@@ -9,7 +8,8 @@
 						<input type="text" name="user[name]" value="<%=@user.name%>" placeholder="Type your name" >
 						<input type="text" name="user[email]" value="<%=@user.email%>" placeholder="Type your email" >
 						<input type="password" name ="user[password]" value="" placeholder="Type your password">
-						<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">Update your details</button> 
+						<button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false">Update your details</button> 
+						<a href="/close_account" class="btn btn-outline-danger">Close account</a>
 				</form>
 		</div>
 </div>
