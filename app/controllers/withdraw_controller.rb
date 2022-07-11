@@ -1,4 +1,6 @@
 class WithdrawController < ApplicationController
+    before_action :authenticate_user!
+
     def new
         @withdraw = Withdraw.new
     end
