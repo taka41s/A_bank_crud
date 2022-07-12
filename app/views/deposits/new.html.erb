@@ -1,10 +1,10 @@
-<p class="notice"><%= flash[:notice] %></p>
-<p class="alert"><%= flash[:alert] %></p>
 <div class="container">
+  <p class="notice"><%= flash[:notice] %></p>
+  <p class="alert"><%= flash[:alert] %></p>
   <div class="form">
     <form action="/deposit" method="POST">
         <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-        <input type="text" placeholder="Amount you want to deposit" name="user[amount]" value="<%=@deposit.amount%>">
+        <input type="text" id="amount" placeholder="Amount you want to deposit" name="user[amount]" value="<%=@deposit.amount%>">
         <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false">Deposit</button>
     </form>
   </div>

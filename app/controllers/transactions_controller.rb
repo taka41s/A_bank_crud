@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
     def create
         @user = User.find_by(id: current_user.id)
         @target_user = User.find_by(email: user_params[:to_user])
-        amount = user_params[:amount].to_i
+        amount = params[:user][:amount].gsub(/[\s,]/ ,"").tr('.', '').to_i
         @transactions = Transaction.new(user_params)
         @transactions.user_id = current_user.id
         @transactions.from_user = current_user.email

@@ -10,7 +10,7 @@
     <tbody>
       <%@deposits.each do |deposit|%>
         <tr>
-          <td> <%=deposit.id%> </td>
+          <td><%=deposit.id%></td>
           <td><%=deposit.amount%></td>
           <td><%=deposit.created_at.strftime("%H:%M:%S")%></td>
         </tr>

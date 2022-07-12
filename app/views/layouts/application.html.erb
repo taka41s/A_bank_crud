@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -41,8 +41,8 @@
             <a href="#" class="img logo rounded-circle mb-5" style=""></a>
             <ul class="list-unstyled components mb-5">
               <li class="active">
-                <p>Wallet: $<%=current_user.wallet_balance%></p>
-                <p>Balance: $<%=current_user.current_balance%></p>
+                <p>Wallet: $<%= number_with_precision(current_user.wallet_balance, :precision => 2, :delimiter => ',') %></p>
+                <p>Balance: $<%= number_with_precision(current_user.current_balance, :precision => 2, :delimiter => ',') %></p>
               </li>
               <li class="active">
                 <a href="/:user_id/edit">
@@ -79,4 +79,7 @@
         </nav> 
       <%= yield %>
   <%end%>
+  <script>
+    $('#amount').maskMoney()
+  </script>
 </html>

@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_10_154919) do
+ActiveRecord::Schema.define(version: 2022_07_12_044514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "deposits", force: :cascade do |t|
     t.string "bank_account"
-    t.float "amount"
+    t.bigint "amount"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2022_07_10_154919) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.float "amount", default: 0.0, null: false
+    t.bigint "amount", default: 0, null: false
     t.string "from_user"
     t.string "to_user"
     t.bigint "user_id", null: false
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2022_07_10_154919) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
-    t.float "current_balance", default: 0.0, null: false
-    t.float "wallet_balance", default: 0.0, null: false
+    t.bigint "current_balance", default: 0, null: false
+    t.bigint "wallet_balance", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "disabled_account"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2022_07_10_154919) do
   end
 
   create_table "withdraws", force: :cascade do |t|
-    t.float "amount", default: 0.0, null: false
+    t.bigint "amount", default: 0, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

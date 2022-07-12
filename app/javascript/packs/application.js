@@ -8,7 +8,10 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "packs/bootstrap";
+import './jquery-maskmoney.js'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
