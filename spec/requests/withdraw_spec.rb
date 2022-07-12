@@ -13,7 +13,7 @@ RSpec.describe "Transactions", type: :request do
       }
       post(withdraw_path, params: {user: user_params})
       @user.reload
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(302)
       expect(@user.wallet_balance).to eq(500.0)
       expect(@user.current_balance).to eq(1500.0)
     end
