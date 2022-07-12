@@ -9,8 +9,8 @@ class WithdrawController < ApplicationController
         @user = current_user
         @withdraw = Withdraw.new(user_params)
         @withdraw.user_id = @user.id
-        amount = params[:user][:amount].gsub(/[\s,]/ ,"").tr('.', '').to_i
-        if amount.to_i <= @user.current_balance
+        amount = params[:user][:amount].gsub(/[\s,]/ ,"").to_f
+        if amount <= @user.current_balance
             @withdraw.transaction do
                 @user.update_attribute(:current_balance, @user.current_balance - amount)
                 @user.update_attribute(:wallet_balance, @user.wallet_balance + amount)

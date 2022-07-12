@@ -12,7 +12,7 @@ class DepositsController < ApplicationController
         if @deposit.save
             @user = User.find_by(email: current_user.email)
             @deposit = Deposit.new(user_params)
-            amount = params[:user][:amount].gsub(/[\s,]/ ,"").tr('.', '').to_i
+            amount = params[:user][:amount].gsub(/[\s,]/ ,"").to_f
             @deposit.transaction do
                 @deposit.save
                 @user.update_attribute(:current_balance, @user.current_balance + amount)
