@@ -6,8 +6,11 @@ class WithdrawController < ApplicationController
     end
 
     def create
-        @user = User.find_by(email: current_user.email)
+        @user = current_user
+
         @withdraw = Withdraw.new(user_params)
+        @withdraw.user_id = @user.id
+
         amount = params[:user][:amount].to_f
         if amount <= @user.current_balance
             @withdraw.transaction do
