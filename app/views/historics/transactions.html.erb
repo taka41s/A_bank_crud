@@ -10,7 +10,7 @@
     <tbody>
       <%@transactions.each do |transaction|%>
         <tr>
-          <td> <%=transaction.id%> </td>
+          <td><%=transaction.id%> </td>
           <td><%=transaction.amount%></td>
           <td><%=transaction.created_at.strftime("%H:%M:%S")%></td>
         </tr>

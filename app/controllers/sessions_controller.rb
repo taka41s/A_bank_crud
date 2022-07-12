@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
 
     def create
         @user = User.find_by(email: user_params[:email])
-        if @user && @user.is_password?(user_params[:password]) && @user.disabled_account != true
+
+        if @user && @user.is_password?(user_params[:password])
             session[:user_id] = @user.id
             redirect_to '/deposit'
-        elsif @user.disabled_account == true
-            redirect_to '/login', {
-                notice: 'Account disabled'
-            }
+        elsif @user.disabled_account.present?
+            flash.now[:notice] = 'Account disabled'
+            render :new
         else
             flash.now[:notice] = 'Invalid email or password'
             render :new

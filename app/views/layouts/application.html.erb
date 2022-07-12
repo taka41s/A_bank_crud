@@ -41,6 +41,7 @@
             <a href="#" class="img logo rounded-circle mb-5" style=""></a>
             <ul class="list-unstyled components mb-5">
               <li class="active">
+                <p>Your account id: <%=current_user.id%></p>
                 <p>Wallet: $<%= number_with_precision(current_user.wallet_balance, :precision => 2, :delimiter => ',') %></p>
                 <p>Balance: $<%= number_with_precision(current_user.current_balance, :precision => 2, :delimiter => ',') %></p>
               </li>

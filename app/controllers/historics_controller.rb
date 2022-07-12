@@ -21,4 +21,14 @@ class HistoricsController < ApplicationController
 
     render :withdraws
   end
+
+  def search
+
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:start_date, :end_date)
+  end
 end
